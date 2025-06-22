@@ -5,17 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>喵喵的角落｜Fia的小宇宙</title>
   <style>
+    :root {
+      --bg-color: #eefaf4;
+      --header-color: #a8d5ba;
+      --text-color: #334;
+      --accent-color: #81c784;
+      --footer-color: #cce5d1;
+    }
+
+    body.dark-mode {
+      --bg-color: #1e2d24;
+      --header-color: #355849;
+      --text-color: #e0f2e9;
+      --accent-color: #a5d6a7;
+      --footer-color: #2f4f3d;
+    }
+
     body {
       margin: 0;
       padding: 0;
       font-family: "Helvetica Neue", sans-serif;
-      background-color: #fff8f0;
-      color: #444;
-      cursor: none; /* 隐藏默认鼠标 */
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      cursor: none;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     header {
       background-color: #ffcdd2;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+     header {
+      background-color: var(--header-color);
       text-align: center;
       padding: 60px 20px;
     }
@@ -27,7 +50,6 @@
 
     header p {
       font-size: 1.2em;
-      color: #6d4c41;
     }
 
     .container {
@@ -43,7 +65,7 @@
     section h2 {
       font-size: 2em;
       margin-bottom: 20px;
-      border-left: 6px solid #f48fb1;
+      border-left: 6px solid var(--accent-color);
       padding-left: 12px;
     }
 
@@ -56,23 +78,23 @@
       display: inline-block;
       margin-top: 20px;
       padding: 10px 20px;
-      background-color: #f48fb1;
+      background-color: var(--accent-color);
       color: white;
       border-radius: 6px;
       text-decoration: none;
       transition: background-color 0.3s ease;
+      cursor: pointer;
     }
 
     .meow-button:hover {
-      background-color: #ec407a;
+      background-color: #66bb6a;
     }
 
     footer {
-      background-color: #ffe4e1;
+      background-color: var(--footer-color);
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
-      color: #555;
     }
 
     .cat-interaction {
@@ -88,7 +110,6 @@
       max-width: 200px;
     }
 
-    /* 自定义猫爪鼠标 */
     #custom-cursor {
       position: fixed;
       width: 32px;
@@ -98,11 +119,26 @@
       background: url('https://static.vecteezy.com/system/resources/previews/027/209/347/non_2x/cute-cat-paw-all-white-free-png.png') no-repeat center center;
       background-size: contain;
     }
+
+    .toggle-mode {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 8px 12px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9em;
+      cursor: pointer;
+      z-index: 10000;
+    }
   </style>
 </head>
 <body>
   <div id="custom-cursor"></div>
-
+  <button class="toggle-mode" onclick="toggleMode()">切换模式</button>
+  
   <header>
     <h1>欢迎！你来到了Fia的神秘角落🐾</h1>
     <p>有朋自远方来不亦乐乎！（喜）</p>
@@ -138,6 +174,18 @@
       cursor.style.left = e.pageX + 'px';
       cursor.style.top = e.pageY + 'px';
     });
+
+    // 解决交互点击问题：设置 pointer-events:auto 给交互元素
+    const interactiveElements = document.querySelectorAll('a, button, .meow-button, .cat-interaction');
+    interactiveElements.forEach(el => {
+      el.style.pointerEvents = 'auto';
+    });
+
+    // 切换模式函数
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+    
   </script>
 </body>
 </html>
