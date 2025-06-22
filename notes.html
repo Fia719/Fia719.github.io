@@ -6,6 +6,63 @@
   <title>Fia碎碎念｜Fia的小宇宙</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    :root {
+      --bg-color: #eefaf4;
+      --header-color: #a8d5ba;
+      --text-color: #334;
+      --accent-color: #81c784;
+      --footer-color: #cce5d1;
+    }
+
+    body.dark-mode {
+      --bg-color: #1e2d24;
+      --header-color: #355849;
+      --text-color: #e0f2e9;
+      --accent-color: #a5d6a7;
+      --footer-color: #2f4f3d;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    nav {
+      background-color: var(--accent-color);
+      text-align: center;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background-color: var(--header-color);
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1em;
+    }
+    
     .notes-container {
       display: flex;
       flex-direction: column;
@@ -79,7 +136,7 @@
   </div>
 
   <footer>
-    <p>© 2025 Fia 🐾 碎碎念手帐</p>
+    <p>© 2025 Fia 猫的记忆档案馆</p>
   </footer>
 
   <script>
