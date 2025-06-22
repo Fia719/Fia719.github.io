@@ -32,12 +32,6 @@
     }
 
     header {
-      background-color: #ffcdd2;
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-     header {
       background-color: var(--header-color);
       text-align: center;
       padding: 60px 20px;
@@ -50,6 +44,23 @@
 
     header p {
       font-size: 1.2em;
+    }
+
+    nav {
+      background-color: var(--accent-color);
+      text-align: center;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     .container {
@@ -110,16 +121,6 @@
       max-width: 200px;
     }
 
-    #custom-cursor {
-      position: fixed;
-      width: 32px;
-      height: 32px;
-      pointer-events: none;
-      z-index: 9999;
-      background: url('https://static.vecteezy.com/system/resources/previews/027/209/347/non_2x/cute-cat-paw-all-white-free-png.png') no-repeat center center;
-      background-size: contain;
-    }
-
     .toggle-mode {
       position: fixed;
       top: 10px;
@@ -137,8 +138,14 @@
 </head>
 <body>
   <div id="custom-cursor"></div>
-  <button class="toggle-mode" onclick="toggleMode()">切换模式</button>
-  
+  <button class="toggle-mode" onclick="toggleMode()">天黑了？戳我喵</button>
+
+  <nav>
+    <a href="index.html">主页</a>
+    <a href="notes.html">Fia碎碎念</a>
+    <a href="meme.html">猫猫meme</a>
+  </nav>
+
   <header>
     <h1>欢迎！你来到了Fia的神秘角落🐾</h1>
     <p>有朋自远方来不亦乐乎！（喜）</p>
@@ -159,7 +166,7 @@
     </section>
 
     <div class="cat-interaction" onclick="alert('你戳到我了喵！记得多喝水/眺望远方喔😽')">
-      👉 点我一下，听喵喵说句话！
+      👉 请戳，听我喵两句😋
     </div>
   </div>
 
@@ -167,25 +174,6 @@
     <p>© 2025 Fia喵 版权所有 | 乱敲代码中🐱</p>
   </footer>
 
-  <script>
-    // 鼠标跟随动画：猫爪图标跟随鼠标移动
-    const cursor = document.getElementById('custom-cursor');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.pageX + 'px';
-      cursor.style.top = e.pageY + 'px';
-    });
-
-    // 解决交互点击问题：设置 pointer-events:auto 给交互元素
-    const interactiveElements = document.querySelectorAll('a, button, .meow-button, .cat-interaction');
-    interactiveElements.forEach(el => {
-      el.style.pointerEvents = 'auto';
-    });
-
-    // 切换模式函数
-    function toggleMode() {
-      document.body.classList.toggle('dark-mode');
-    }
-    
   </script>
 </body>
 </html>
