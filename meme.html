@@ -166,7 +166,6 @@
     <h1>🐾 猫猫meme收藏室</h1>
     <p>欢迎，远道而来的旅行者！你想来点什么喵呢？</p>
   </header>
-  <button class="random-button" onclick="showRandomMeme()">🎲 随机展示一张猫猫图</button>
 
   <div class="meme-gallery" id="memeGallery">
     <div class="meme-item">
@@ -181,13 +180,10 @@
       <img src="https://preview.redd.it/i-beg-you-send-similar-memes-tell-me-where-to-find-more-v0-o2ja4rydv28f1.jpeg?width=640&crop=smart&auto=webp&s=6da7f7b9f9bb2548d966fcd8c5d774c9ebe5220c" alt="人机猫？">
       <div class="meme-title">扣1转人机喵</div>
     </div>
-  </div>
-
-  <div class="upload-form">
-    <h3>🎨 上传你喜欢的猫猫meme！</h3>
-    <input type="text" id="newImageUrl" placeholder="请输入图片链接（URL）" />
-    <input type="text" id="newImageTitle" placeholder="请输入标题/说明" />
-    <button onclick="addMeme()">添加喵</button>
+    <div class="meme-item">
+      <img src="https://preview.redd.it/i-cant-move-v0-5gfwy2r8db8f1.jpeg?width=640&crop=smart&auto=webp&s=11cba3850c42a3084e0e4ecf3559ab80df0aed83" alt="I CAN'T MOVE ">
+      <div class="meme-title">I CAN'T MOVE</div>
+    </div>
   </div>
 
   <footer>
@@ -199,20 +195,6 @@
       document.body.classList.toggle('dark-mode');
     }
 
-    function showRandomMeme() {
-      const memes = document.querySelectorAll(".meme-item");
-      memes.forEach(m => m.style.display = "none");
-      const random = memes[Math.floor(Math.random() * memes.length)];
-      random.style.display = "block";
-    }
-
-    function addMeme() {
-      const url = document.getElementById("newImageUrl").value;
-      const title = document.getElementById("newImageTitle").value;
-      if (!url || !title) {
-        alert("请填写图片链接和标题！");
-        return;
-      }
       const container = document.getElementById("memeGallery");
       const div = document.createElement("div");
       div.className = "meme-item";
