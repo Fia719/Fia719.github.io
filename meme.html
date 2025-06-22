@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>猫猫meme｜Fia的小宇宙</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .meme-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .meme-gallery img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .meme-gallery img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-mode" onclick="toggleMode()">🌙 天黑请戳我</button>
+
+  <nav>
+    <a href="index.html">主页</a>
+    <a href="notes.html">Fia碎碎念</a>
+    <a href="meme.html">猫猫meme</a>
+  </nav>
+
+  <header>
+    <h1>🐾 猫猫meme收藏室</h1>
+    <p>欢迎，远道而来的旅行者！你想来点什么喵呢？</p>
+  </header>
+
+  <div class="meme-gallery">
+    <img src="https://preview.redd.it/i-beg-you-send-similar-memes-tell-me-where-to-find-more-v0-o2ja4rydv28f1.jpeg?width=640&crop=smart&auto=webp&s=6da7f7b9f9bb2548d966fcd8c5d774c9ebe5220c" alt="人机猫？">
+    <img src="https://preview.redd.it/2kzbxf86e26f1.jpeg?width=320&crop=smart&auto=webp&s=a4860575a0a38921c7eebed4ae4848a835710c52" alt="NO">
+    <img src="https://i.pinimg.com/736x/ce/53/d4/ce53d4345d27e5e76fb5c212d02e31ef.jpg" alt="INFP with cats">
+
+  </div>
+
+  <footer>
+    <p>© 2025 Fia 🐈</p>
+  </footer>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>
