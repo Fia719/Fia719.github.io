@@ -5,9 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fia碎碎念｜Fia的小宇宙</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .notes-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .note-card {
+      background-color: #ffffffcc;
+      border-left: 6px solid var(--accent-color);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+
+    .dark-mode .note-card {
+      background-color: #2a4033cc;
+    }
+
+    .note-card:hover {
+      transform: scale(1.01);
+    }
+
+    .note-date {
+      font-size: 0.85em;
+      color: #777;
+      margin-bottom: 8px;
+    }
+
+    .note-text {
+      font-size: 1.1em;
+      line-height: 1.7;
+    }
+
+    .note-icon {
+      font-size: 1.5em;
+      margin-right: 8px;
+    }
+  </style>
 </head>
 <body>
-  <button class="toggle-mode" onclick="toggleMode()">🌙天黑请戳我</button>
+  <button class="toggle-mode" onclick="toggleMode()">🌙 天黑请戳我</button>
 
   <nav>
     <a href="index.html">主页</a>
@@ -20,16 +61,25 @@
     <p>INFP猫猫都在胡思乱想些什么捏？</p>
   </header>
 
-  <div class="container">
-    <section>
-      <h2>听我喵两句</h2>
-      <p> 2025年6月22日：活着很重要的一件事情是，知道除了明天，我们还能去什么地方。</p>
-      
-    </section>
+  <div class="container notes-container">
+    <div class="note-card">
+      <div class="note-date">2025年6月22日</div>
+      <div class="note-text"><span class="note-icon">🌿</span>活着很重要的一件事情是，知道除了明天，我们还能去什么地方。</div>
+    </div>
+
+    <div class="note-card">
+      <div class="note-date">2025年6月21日</div>
+      <div class="note-text"><span class="note-icon">😿</span>又是练习克服泪失禁的一天。效果甚微。</div>
+    </div>
+
+    <div class="note-card">
+      <div class="note-date">2025年6月15日</div>
+      <div class="note-text"><span class="note-icon">😷</span>大健康的三年好像一场梦...</div>
+    </div>
   </div>
 
   <footer>
-    <p>© 2025 Fia 听我喵两句 🐾</p>
+    <p>© 2025 Fia 🐾 碎碎念手帐</p>
   </footer>
 
   <script>
