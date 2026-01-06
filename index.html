@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fia's Workspace | Code & Archive</title>
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #2c3e50;
+      --accent-color: #3498db; 
+      --secondary-color: #7f8c8d;
+      --card-bg: #f8f9fa;
+      --border-radius: 8px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #1a1a1a;
+        --text-color: #ecf0f1;
+        --accent-color: #5dade2;
+        --secondary-color: #bdc3c7;
+        --card-bg: #2c2c2c;
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      transition: all 0.3s ease;
+    }
+
+    /* 布局容器 */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* 顶部导航与语言切换 */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--secondary-color);
+      margin-right: 20px;
+      font-size: 0.95em;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+
+    .lang-btn {
+      background: none;
+      border: 1px solid var(--secondary-color);
+      color: var(--text-color);
+      padding: 5px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.8em;
+      transition: all 0.2s;
+    }
+
+    .lang-btn:hover {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+
+    /* 头部介绍 */
+    header {
+      margin-bottom: 50px;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .bio {
+      font-size: 1.1em;
+      color: var(--secondary-color);
+      max-width: 600px;
+    }
+
+    /* 章节通用样式 */
+    section {
+      margin-bottom: 50px;
+    }
+
+    h2 {
+      font-size: 1.3em;
+      border-bottom: 2px solid var(--card-bg);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    h2::before {
+      content: '#';
+      color: var(--accent-color);
+      margin-right: 8px;
+    }
+
+    /* 项目卡片 */
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 1.1em;
+    }
+
+    .card-meta {
+      font-size: 0.8em;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .card p {
+      font-size: 0.95em;
+      margin-bottom: 15px;
+    }
+
+    .card a {
+      font-size: 0.9em;
+      text-decoration: none;
+      color: var(--text-color);
+      border-bottom: 1px dotted var(--secondary-color);
+    }
+
+    /* 列表样式 */
+    ul.roadmap {
+      list-style: none;
+      padding: 0;
+    }
+    
+    ul.roadmap li {
+      margin-bottom: 12px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    ul.roadmap li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
+    }
+
+    /* 页脚 */
+    footer {
+      margin-top: 80px;
+      border-top: 1px solid var(--card-bg);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 0.85em;
+      color: var(--secondary-color);
+    }
+
+    /* 语言切换控制类 */
+    /* 默认显示中文，隐藏英文 */
+    [lang="en"] { display: none; }
+    
+    /* 当 body 有 .en-mode 类时，显示英文，隐藏中文 */
+    body.en-mode [lang="en"] { display: block; }
+    body.en-mode [lang="zh"] { display: none; }
+    
+    /* 针对 grid 等特殊布局的修复 */
+    body.en-mode .project-grid [lang="en"] { display: block; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <nav>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="https://github.com/Fia719" target="_blank">GitHub</a>
+        <a href="mailto:pkuhollow2026@proton.me">Contact</a>
+      </div>
+      <button class="lang-btn" onclick="toggleLang()">EN / 中</button>
+    </nav>
+
+    <header>
+      <h1>Hi, I'm Fia.</h1>
+      
+      <p class="bio" lang="zh">
+        一名正在探索代码世界的初学者。
+        <br>
+        主要关注 <strong>Web 开发</strong>、<strong>数据归档</strong> 以及技术与人文的交叉领域。
+        目前正在学习 Python 和前端技术，试图构建一些有趣的数字工具。
+      </p>
+
+      <p class="bio" lang="en">
+        A coding learner exploring the digital world.
+        <br>
+        Focusing on <strong>Web Development</strong>, <strong>Data Archiving</strong>, and the intersection of tech & liberal arts.
+        Currently learning Python and Front-end tech, trying to build some digital tools.
+      </p>
+    </header>
+
+    <section>
+      <h2 lang="zh">正在进行的项目</h2>
+      <h2 lang="en">Selected Projects</h2>
+
+      <div class="project-grid">
+        
+        <div class="card">
+          <span class="card-meta">Python / Data Mining</span>
+          
+          <h3 lang="zh">社交媒体文本归档 (Hollow Archive)</h3>
+          <p lang="zh">
+            针对特定匿名社区文本数据的清洗、结构化与持久化存储方案。
+            旨在保存数字化记忆，并为后续的社会科学文本分析提供语料支持。
+          </p>
+          
+          <h3 lang="en">Social Media Text Archive</h3>
+          <p lang="en">
+            A data persistence project focusing on cleaning, structuring, and archiving text data from anonymous communities.
+            Aimed at preserving digital memories and providing corpus for social science analysis.
+          </p>
+          
+          <a href="https://github.com/Fia719" target="_blank">View on GitHub &rarr;</a>
+        </div>
+
+        <div class="card">
+          <span class="card-meta">HTML5 / Interaction</span>
+          
+          <h3 lang="zh">Web 交互实验：Touch</h3>
+          <p lang="zh">
+            一个基于原生 JS 的轻量级网页交互 Demo。
+            探索简单的点击反馈与用户情绪之间的联系。（其实就是个解压小游戏）
+          </p>
+          
+          <h3 lang="en">Web Interaction Experiment: Touch</h3>
+          <p lang="en">
+            A lightweight web interaction demo based on vanilla JS.
+            Exploring the connection between simple click feedback and user emotions.
+          </p>
+          
+          <a href="#">Try Demo &rarr;</a>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <h2 lang="zh">学习路线图</h2>
+      <h2 lang="en">Roadmap</h2>
+      
+      <ul class="roadmap" lang="zh">
+        <li><strong>目前状态：</strong> 学习 Python 数据处理库 (Pandas) ，练习爬虫。</li>
+        <li><strong>下一步：</strong> 深入 React 框架，想重构一下现在的静态网页。</li>
+        <li><strong>长期目标：</strong> 维护一个长期的数据仓库，深入学习文本分析和开展更多研究。</li>
+      </ul>
+
+      <ul class="roadmap" lang="en">
+        <li><strong>Current:</strong> Diving into Python data libraries (Pandas) and web scraping.</li>
+        <li><strong>Next:</strong> Learning React to refactor this static site.</li>
+        <li><strong>Goal:</strong> Becoming capable of full-stack development and maintaining a long-term data warehouse.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Fia. Built with code & curiosity.</p>
+    </footer>
+  </div>
+
+  <script>
+    function toggleLang() {
+      document.body.classList.toggle('en-mode');
+      // 记住用户的选择
+      const isEn = document.body.classList.contains('en-mode');
+      localStorage.setItem('language', isEn ? 'en' : 'zh');
+    }
+
+    // 页面加载时读取用户之前的选择
+    window.onload = function() {
+      const savedLang = localStorage.getItem('language');
+      if (savedLang === 'en') {
+        document.body.classList.add('en-mode');
+      }
+    }
+  </script>
+
+</body>
+</html>
