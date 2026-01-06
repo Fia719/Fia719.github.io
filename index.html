@@ -6,196 +6,309 @@
   <title>Fia's Workspace | Code & Archive</title>
   <style>
     :root {
-      --bg-color: #ffffff;
-      --text-color: #2c3e50;
-      --accent-color: #3498db; 
-      --secondary-color: #7f8c8d;
-      --card-bg: #f8f9fa;
-      --border-radius: 8px;
+      /* 基础色板：灰蓝调 */
+      --bg-color: #fcfcfc;
+      --bg-pattern: #e5e5e5; /* 背景网格点颜色 */
+      --text-main: #2c3e50;
+      --text-sub: #546e7a;
+      --accent-color: #2980b9; /* 稍微深一点的蓝 */
+      --accent-hover: #3498db;
+      --card-bg: #ffffff;
+      --card-border: #ecf0f1;
+      --shadow: rgba(0, 0, 0, 0.05);
+      --shadow-hover: rgba(0, 0, 0, 0.1);
+      --code-font: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg-color: #1a1a1a;
-        --text-color: #ecf0f1;
+        --bg-color: #121212;
+        --bg-pattern: #2c2c2c;
+        --text-main: #e0e0e0;
+        --text-sub: #a0a0a0;
         --accent-color: #5dade2;
-        --secondary-color: #bdc3c7;
-        --card-bg: #2c2c2c;
+        --accent-hover: #85c1e9;
+        --card-bg: #1e1e1e;
+        --card-border: #333333;
+        --shadow: rgba(0, 0, 0, 0.3);
+        --shadow-hover: rgba(0, 0, 0, 0.5);
       }
     }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
+      /* 背景点阵纹理 */
+      background-image: radial-gradient(var(--bg-pattern) 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: var(--text-main);
+      line-height: 1.7;
       margin: 0;
       padding: 0;
-      transition: all 0.3s ease;
+      transition: background 0.3s ease;
     }
 
     /* 布局容器 */
     .container {
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 60px 24px;
+      /* 整体淡入动效 */
+      animation: fadeIn 0.8s ease-out;
     }
 
-    /* 顶部导航与语言切换 */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 导航栏 */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 60px;
+      margin-bottom: 80px;
+      font-family: var(--code-font); /* 导航栏用代码字体 */
     }
 
     .nav-links a {
       text-decoration: none;
-      color: var(--secondary-color);
-      margin-right: 20px;
-      font-size: 0.95em;
-      font-weight: 500;
+      color: var(--text-sub);
+      margin-right: 25px;
+      font-size: 0.9em;
+      position: relative;
+      transition: color 0.2s;
     }
 
     .nav-links a:hover {
       color: var(--accent-color);
     }
 
+    /* 导航下划线动效 */
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--accent-color);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
     .lang-btn {
-      background: none;
-      border: 1px solid var(--secondary-color);
-      color: var(--text-color);
-      padding: 5px 12px;
-      border-radius: 20px;
+      background: transparent;
+      border: 1px solid var(--text-sub);
+      color: var(--text-sub);
+      padding: 6px 14px;
+      border-radius: 4px; 
       cursor: pointer;
       font-size: 0.8em;
+      font-family: var(--code-font);
       transition: all 0.2s;
     }
 
     .lang-btn:hover {
       border-color: var(--accent-color);
       color: var(--accent-color);
+      background: rgba(41, 128, 185, 0.05);
     }
 
-    /* 头部介绍 */
+    /* 头部区域 */
     header {
-      margin-bottom: 50px;
+      margin-bottom: 70px;
+      border-left: 4px solid var(--accent-color); /* 左侧强调线 */
+      padding-left: 24px;
     }
 
     h1 {
-      font-size: 2.2em;
-      margin-bottom: 10px;
-      letter-spacing: -0.5px;
+      font-size: 2.6em;
+      margin: 0 0 16px 0;
+      letter-spacing: -1px;
+      font-weight: 700;
+      color: var(--text-main);
     }
 
     .bio {
-      font-size: 1.1em;
-      color: var(--secondary-color);
-      max-width: 600px;
+      font-size: 1.15em;
+      color: var(--text-sub);
+      max-width: 620px;
+      margin: 0;
     }
 
-    /* 章节通用样式 */
+    /* 章节样式 */
     section {
-      margin-bottom: 50px;
+      margin-bottom: 70px;
     }
 
     h2 {
-      font-size: 1.3em;
-      border-bottom: 2px solid var(--card-bg);
-      padding-bottom: 10px;
-      margin-bottom: 20px;
+      font-size: 1.4em;
+      font-weight: 600;
+      margin-bottom: 24px;
+      color: var(--text-main);
       display: flex;
       align-items: center;
     }
 
     h2::before {
-      content: '#';
+      content: '//'; /* 用代码注释符号代替 # */
       color: var(--accent-color);
-      margin-right: 8px;
+      margin-right: 10px;
+      font-family: var(--code-font);
+      font-size: 0.8em;
+      opacity: 0.6;
     }
 
-    /* 项目卡片 */
+    /* 卡片设计 */
     .project-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 20px;
+      gap: 24px;
     }
 
     .card {
       background-color: var(--card-bg);
-      padding: 20px;
-      border-radius: var(--border-radius);
-      transition: transform 0.2s;
+      padding: 24px;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px var(--shadow);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      overflow: hidden;
     }
 
     .card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-5px); /* 悬浮上移 */
+      box-shadow: 0 12px 20px var(--shadow-hover);
+      border-color: var(--accent-hover);
     }
 
-    .card h3 {
-      margin-top: 0;
-      font-size: 1.1em;
+    /* 卡片顶部装饰条 */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-color), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .card:hover::before {
+      opacity: 1;
     }
 
     .card-meta {
-      font-size: 0.8em;
+      font-size: 0.75em;
+      font-family: var(--code-font);
       color: var(--accent-color);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-      display: block;
+      margin-bottom: 12px;
+      display: inline-block;
+      background: rgba(41, 128, 185, 0.08);
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.25em;
+      color: var(--text-main);
     }
 
     .card p {
       font-size: 0.95em;
-      margin-bottom: 15px;
+      color: var(--text-sub);
+      margin-bottom: 20px;
     }
 
     .card a {
       font-size: 0.9em;
+      font-weight: 500;
       text-decoration: none;
-      color: var(--text-color);
-      border-bottom: 1px dotted var(--secondary-color);
+      color: var(--accent-color);
+      display: inline-flex;
+      align-items: center;
+      transition: opacity 0.2s;
+    }
+    .card a:hover {
+      opacity: 0.7;
     }
 
-    /* 列表样式 */
+    /* 关注领域 - 标签化设计 */
+    .interest-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .interest-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 15px;
+      border-radius: 6px;
+      font-size: 0.9em;
+      color: var(--text-sub);
+    }
+    .interest-item strong {
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* 路线图 */
     ul.roadmap {
       list-style: none;
       padding: 0;
+      border-left: 2px solid var(--card-border); /* 左侧时间轴线 */
+      margin-left: 10px;
     }
     
     ul.roadmap li {
-      margin-bottom: 12px;
-      padding-left: 20px;
+      margin-bottom: 20px;
+      padding-left: 24px;
       position: relative;
+      color: var(--text-sub);
     }
 
+    /* 时间轴圆点 */
     ul.roadmap li::before {
-      content: '→';
+      content: '';
       position: absolute;
-      left: 0;
-      color: var(--accent-color);
+      left: -6px;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      background: var(--bg-color);
+      border: 2px solid var(--accent-color);
+      border-radius: 50%;
+    }
+
+    ul.roadmap strong {
+      color: var(--text-main);
+      margin-right: 6px;
     }
 
     /* 页脚 */
     footer {
-      margin-top: 80px;
-      border-top: 1px solid var(--card-bg);
-      padding-top: 20px;
+      margin-top: 100px;
+      border-top: 1px dotted var(--text-sub);
+      padding-top: 30px;
       text-align: center;
       font-size: 0.85em;
-      color: var(--secondary-color);
+      color: var(--text-sub);
+      font-family: var(--code-font);
     }
 
-    /* 语言切换控制类 */
-    /* 默认显示中文，隐藏英文 */
+    /* 语言切换控制 */
     [lang="en"] { display: none; }
-    
-    /* 当 body 有 .en-mode 类时，显示英文，隐藏中文 */
     body.en-mode [lang="en"] { display: block; }
     body.en-mode [lang="zh"] { display: none; }
-    
-    /* 针对 grid 等特殊布局的修复 */
     body.en-mode .project-grid [lang="en"] { display: block; }
   </style>
 </head>
@@ -204,11 +317,11 @@
   <div class="container">
     <nav>
       <div class="nav-links">
-        <a href="index.html">Home</a>
+        <a href="index.html">Index</a>
         <a href="https://github.com/Fia719" target="_blank">GitHub</a>
         <a href="mailto:whatsinpkuhollow@protonmail.com">Contact</a>
       </div>
-      <button class="lang-btn" onclick="toggleLang()">EN / 中</button>
+      <button class="lang-btn" onclick="toggleLang()">EN/中</button>
     </nav>
 
     <header>
@@ -230,8 +343,8 @@
     </header>
 
     <section>
-      <h2 lang="zh">正在进行的项目</h2>
-      <h2 lang="en">Current Projects</h2>
+      <h2 lang="zh">精选项目</h2>
+      <h2 lang="en">Selected Projects</h2>
 
       <div class="project-grid">
         
@@ -240,8 +353,8 @@
           
           <h3 lang="zh">社交媒体文本归档 (Hollow Archive)</h3>
           <p lang="zh">
-            针对特定匿名社区文本数据的清洗、结构化与持久化存储方案，并进行初步的社会科学文本分析。
-            旨在保存数字化记忆，并为后续的更多研究提供语料支持。
+            针对特定匿名社区文本数据的清洗、结构化与持久化存储方案。
+            旨在保存数字化记忆，并为后续的计算社会科学研究提供语料支持。
           </p>
           
           <h3 lang="en">Social Media Text Archive</h3>
@@ -254,23 +367,23 @@
         </div>
 
         <div class="card">
-          <span class="card-meta">Python / PySimpleGUI / State Machine</span>
+          <span class="card-meta">Python / PySimpleGUI / FSM</span>
           
-          <h3 lang="zh">简单的交互式叙事游戏 (Cat Adventure)</h3>
+          <h3 lang="zh">交互式叙事引擎 (Cat Adventure)</h3>
           <p lang="zh">
-            一个基于 <strong>PySimpleGUI</strong> 开发的桌面端文字冒险游戏框架。
+            基于 PySimpleGUI 开发的桌面端文字冒险游戏框架。
             <br>
-            内部实现了完整逻辑来管理剧情分支，包含动态资源路径处理（兼容 PyInstaller 打包）与实时 UI 渲染系统。
+            实现了基于有限状态机 (FSM) 的剧情分支管理，包含动态资源路径处理与实时 UI 渲染。
           </p>
           
-          <h3 lang="en">Simple Desktop Interactive Narrative Game</h3>
+          <h3 lang="en">Interactive Narrative Engine</h3>
           <p lang="en">
-            A desktop text adventure framework built with <strong>PySimpleGUI</strong>.
+            A desktop text adventure framework built with PySimpleGUI.
             <br>
-            Implements Finite State Machine for narrative branching. Features dynamic resource path handling (PyInstaller compatible) and real-time UI rendering.
+            Implements Finite State Machine logic for narrative branching. Features dynamic resource path handling and real-time UI rendering.
           </p>
           
-          <a href="https://github.com/Fia719/Game-Cat-Encounter" target="_blank">Try Demo &rarr;</a>
+          <a href="https://github.com/Fia719/Game-Cat-Encounter" target="_blank">View Code &rarr;</a>
         </div>
 
       </div>
@@ -278,20 +391,27 @@
 
     <section>
       <h2 lang="zh">关注领域</h2>
-      <h2 lang="en">Interests</h2>
+      <h2 lang="en">Research Interests</h2>
       
-      <div class="card">
-        <ul style="margin: 0; padding-left: 20px; color: var(--text-color);">
-          <li lang="zh"><strong>计算社会科学 (Computational Social Science)</strong>: 利用编程技术处理非结构化文本数据。</li>
-          <li lang="en"><strong>Computational Social Science</strong>: Processing unstructured text data with programming techniques.</li>
-          
-          <li lang="zh" style="margin-top: 10px;"><strong>数字人文 (Digital Humanities)</strong>: 探索互联网社区中的集体记忆与身份认同。</li>
-          <li lang="en" style="margin-top: 10px;"><strong>Digital Humanities</strong>: Exploring collective memory and identity in online communities.</li>
-          
-          <li lang="zh" style="margin-top: 10px;"><strong>人机交互 (HCI)</strong>: 研究极简界面下的用户情绪反馈。</li>
-          <li lang="en" style="margin-top: 10px;"><strong>HCI</strong>: Studying user emotional feedback in minimalist interfaces.</li>
-        </ul>
-      </div>
+      <ul class="interest-list">
+        <li class="interest-item" lang="zh">
+          <strong>计算社会科学</strong>
+          利用编程技术处理非结构化文本数据。
+        </li>
+        <li class="interest-item" lang="en">
+          <strong>Computational Social Science</strong>
+          Processing unstructured text data with programming techniques.
+        </li>
+
+        <li class="interest-item" lang="zh">
+          <strong>数字人文</strong>
+          探索互联网社区中的集体记忆与身份认同。
+        </li>
+        <li class="interest-item" lang="en">
+          <strong>Digital Humanities</strong>
+          Exploring collective memory and identity in online communities.
+        </li>
+      </ul>
     </section>
     
     <section>
@@ -299,37 +419,34 @@
       <h2 lang="en">Roadmap</h2>
       
       <ul class="roadmap" lang="zh">
-        <li><strong>目前状态：</strong> 学习 Python 数据处理库 (Pandas) ，练习爬虫。</li>
-        <li><strong>下一步：</strong> 深入 React 框架，想重构一下现在的静态网页。</li>
-        <li><strong>长期目标：</strong> 维护一个长期的数据仓库，深入学习文本分析和开展更多研究。</li>
+        <li><strong>Current:</strong> 学习 Python 数据处理库 (Pandas) ，练习爬虫。</li>
+        <li><strong>Next:</strong> 深入 React 框架，重构静态网页。</li>
+        <li><strong>Goal:</strong> 维护长期数据仓库，开展更多计算社科研究。</li>
       </ul>
 
       <ul class="roadmap" lang="en">
         <li><strong>Current:</strong> Diving into Python data libraries (Pandas) and web scraping.</li>
         <li><strong>Next:</strong> Learning React to refactor this static site.</li>
-        <li><strong>Goal:</strong> Maintaining a long-term data warehouse and conducting more research.</li>
+        <li><strong>Goal:</strong> Maintaining a long-term data warehouse and conducting research.</li>
       </ul>
     </section>
 
-    <div style="text-align: center; margin-top: 60px; font-style: italic; color: var(--secondary-color);">
-      <p lang="zh">"Data is frozen time...?"</p>
-      <p lang="en">"...Code is fluid logic."</p>
+    <div style="text-align: center; margin-top: 80px; font-style: italic; color: var(--text-sub); font-family: var(--code-font);">
+      <p lang="zh">"Data is frozen time; Code is fluid logic."</p>
+      <p lang="en">"Data is frozen time; Code is fluid logic."</p>
     </div>
     
     <footer>
-      <p>&copy; 2026 Fia. Built with code & curiosity.</p>
+      <p>&copy; 2026 Fia. All systems operational.</p>
     </footer>
   </div>
 
   <script>
     function toggleLang() {
       document.body.classList.toggle('en-mode');
-      // 记住用户的选择
       const isEn = document.body.classList.contains('en-mode');
       localStorage.setItem('language', isEn ? 'en' : 'zh');
     }
-
-    // 页面加载时读取用户之前的选择
     window.onload = function() {
       const savedLang = localStorage.getItem('language');
       if (savedLang === 'en') {
