@@ -68,7 +68,7 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 80px;
-      font-family: var(--code-font); /* 导航栏用代码字体 */
+      font-family: var(--code-font); 
     }
 
     .nav-links a {
@@ -120,8 +120,6 @@
     /* 头部区域 */
     header {
       margin-bottom: 70px;
-      border-left: 4px solid var(--accent-color); /* 左侧强调线 */
-      padding-left: 24px;
     }
 
     h1 {
@@ -154,7 +152,7 @@
     }
 
     h2::before {
-      content: '//'; /* 用代码注释符号代替 # */
+      content: '#';
       color: var(--accent-color);
       margin-right: 10px;
       font-family: var(--code-font);
@@ -343,8 +341,8 @@
     </header>
 
     <section>
-      <h2 lang="zh">精选项目</h2>
-      <h2 lang="en">Selected Projects</h2>
+      <h2 lang="zh">正在进行的项目</h2>
+      <h2 lang="en">Current Projects</h2>
 
       <div class="project-grid">
         
@@ -353,8 +351,8 @@
           
           <h3 lang="zh">社交媒体文本归档 (Hollow Archive)</h3>
           <p lang="zh">
-            针对特定匿名社区文本数据的清洗、结构化与持久化存储方案。
-            旨在保存数字化记忆，并为后续的计算社会科学研究提供语料支持。
+            针对特定匿名社区文本数据的清洗、结构化与持久化存储方案，并进行初步的社会科学文本分析。
+            旨在保存数字化记忆，并为后续的更多研究提供语料支持。
           </p>
           
           <h3 lang="en">Social Media Text Archive</h3>
@@ -369,14 +367,14 @@
         <div class="card">
           <span class="card-meta">Python / PySimpleGUI / FSM</span>
           
-          <h3 lang="zh">交互式叙事引擎 (Cat Adventure)</h3>
+          <h3 lang="zh">简单的交互式叙事游戏 (Cat Adventure)</h3>
           <p lang="zh">
-            基于 PySimpleGUI 开发的桌面端文字冒险游戏框架。
+            一个基于 <strong>PySimpleGUI</strong> 开发的桌面端文字冒险游戏框架。
             <br>
-            实现了基于有限状态机 (FSM) 的剧情分支管理，包含动态资源路径处理与实时 UI 渲染。
+            内部实现了完整逻辑来管理剧情分支，包含动态资源路径处理（兼容 PyInstaller 打包）与实时 UI 渲染系统。
           </p>
           
-          <h3 lang="en">Interactive Narrative Engine</h3>
+          <h3 lang="en">Simple Desktop Interactive Narrative Game</h3>
           <p lang="en">
             A desktop text adventure framework built with PySimpleGUI.
             <br>
@@ -391,7 +389,7 @@
 
     <section>
       <h2 lang="zh">关注领域</h2>
-      <h2 lang="en">Research Interests</h2>
+      <h2 lang="en">Interests</h2>
       
       <ul class="interest-list">
         <li class="interest-item" lang="zh">
@@ -411,6 +409,15 @@
           <strong>Digital Humanities</strong>
           Exploring collective memory and identity in online communities.
         </li>
+
+        <li class="interest-item" lang="zh">
+          <strong>人机交互</strong>
+          研究极简界面下的用户情绪反馈。
+        </li>
+        <li class="interest-item" lang="en">
+          <strong>HCI</strong>
+          Studying user emotional feedback in minimalist interfaces.
+        </li>
       </ul>
     </section>
     
@@ -419,9 +426,9 @@
       <h2 lang="en">Roadmap</h2>
       
       <ul class="roadmap" lang="zh">
-        <li><strong>Current:</strong> 学习 Python 数据处理库 (Pandas) ，练习爬虫。</li>
-        <li><strong>Next:</strong> 深入 React 框架，重构静态网页。</li>
-        <li><strong>Goal:</strong> 维护长期数据仓库，开展更多计算社科研究。</li>
+        <li><strong>目前状态:</strong> 学习 Python 数据处理库 (Pandas) ，练习爬虫。</li>
+        <li><strong>下一步:</strong>  深入 React 框架，想重构一下现在的静态网页。</li>
+        <li><strong>长期目标:</strong> 维护一个长期的数据仓库，深入学习文本分析和开展更多研究。</li>
       </ul>
 
       <ul class="roadmap" lang="en">
@@ -432,12 +439,12 @@
     </section>
 
     <div style="text-align: center; margin-top: 80px; font-style: italic; color: var(--text-sub); font-family: var(--code-font);">
-      <p lang="zh">"Data is frozen time; Code is fluid logic."</p>
-      <p lang="en">"Data is frozen time; Code is fluid logic."</p>
+      <p lang="zh">"Data is frozen time...?"</p>
+      <p lang="en">"...Code is fluid logic."</p>
     </div>
     
     <footer>
-      <p>&copy; 2026 Fia. All systems operational.</p>
+      <p>&copy; 2026 Fia. Built with code & curiosity.</p>
     </footer>
   </div>
 
